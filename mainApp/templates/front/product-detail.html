@@ -1,6 +1,7 @@
 {% extends "front/index.html" %}
 {%load static%}
 {%block body%}
+
         <!-- breadcrumb -->
         <div class="tf-breadcrumb">
             <div class="container">
@@ -8,22 +9,19 @@
                     <div class="tf-breadcrumb-list">
                         <a href="/" class="text">Home</a>
                         <i class="icon icon-arrow-right"></i>
-                        <a href="#" class="text">Women</a>
+                        <a href="#" class="text">{{data.maincategory.name}}</a>
                         <i class="icon icon-arrow-right"></i>
-                        <span class="text">Cotton jersey top</span>
+                        <span class="text">{{data.name}}</span>
                     </div>
                     <div class="tf-breadcrumb-prev-next">
                         <a href="#" class="tf-breadcrumb-prev hover-tooltip center">
                             <i class="icon icon-arrow-left"></i>
-                            <!-- <span class="tooltip">Cotton jersey top</span> -->
                         </a>
                         <a href="#" class="tf-breadcrumb-back hover-tooltip center">
                             <i class="icon icon-shop"></i>
-                            <!-- <span class="tooltip">Back to Women</span> -->
                         </a>
                         <a href="#" class="tf-breadcrumb-next hover-tooltip center">
                             <i class="icon icon-arrow-right"></i>
-                            <!-- <span class="tooltip">Cotton jersey top</span> -->
                         </a>
                     </div>
                 </div>
@@ -35,270 +33,129 @@
             <div class="tf-main-product section-image-zoom">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="tf-product-media-wrap sticky-top">
-                                <div class="thumbs-slider">
-                                    <div dir="ltr" class="swiper tf-product-media-thumbs other-image-zoom" data-direction="vertical">
-                                        <div class="swiper-wrapper stagger-wrap">
-                                            <!-- beige -->
-                                            <div class="swiper-slide stagger-item" data-color="beige">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod31.jpg'%}" src="images/shop/products/hmgoepprod31.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="beige">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod.jpg'%}" src="images/shop/products/hmgoepprod.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="beige">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod2.jpg'%}" src="images/shop/products/hmgoepprod2.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="beige">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod3.jpg'%}" src="images/shop/products/hmgoepprod3.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="beige">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod4.jpg'%}" src="images/shop/products/hmgoepprod4.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="beige">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod5.jpg'%}" src="images/shop/products/hmgoepprod5.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <!-- black -->
-                                            <div class="swiper-slide stagger-item" data-color="black">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod6.jpg'%}" src="images/shop/products/hmgoepprod6.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="black">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod7.jpg'%}" src="images/shop/products/hmgoepprod7.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="black">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod8.jpg'%}" src="images/shop/products/hmgoepprod8.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="black">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod9.jpg'%}" src="images/shop/products/hmgoepprod9.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <!-- blue -->
-                                            <div class="swiper-slide stagger-item" data-color="blue">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod10.jpg'%}" src="images/shop/products/hmgoepprod10.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="blue">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod11.jpg'%}" src="images/shop/products/hmgoepprod11.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="blue">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod12.jpg'%}" src="images/shop/products/hmgoepprod12.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="blue">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod13.jpg'%}" src="images/shop/products/hmgoepprod13.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <!-- white -->
-                                            <div class="swiper-slide stagger-item" data-color="white">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod14.jpg'%}" src="images/shop/products/hmgoepprod14.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="white">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod15.jpg'%}" src="images/shop/products/hmgoepprod15.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="white">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod16.jpg'%}" src="images/shop/products/hmgoepprod16.jpg'%}" alt="img-product">
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide stagger-item" data-color="white">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{%static 'images/shop/products/hmgoepprod17.jpg'%}" src="images/shop/products/hmgoepprod17.jpg'%}" alt="img-product">
+                        <!-- Swiper CSS -->
+                            
+                                                
+                            <div class="col-md-6">
+                                <div class="tf-product-media-wrap sticky-top">
+                                    <div class="thumbs-slider">
+                                        <div dir="ltr" class="swiper tf-product-media-thumbs other-image-zoom" data-direction="vertical">
+                                            <div class="swiper-wrapper stagger-wrap">
+                                                <!-- beige -->
+                                                <div class="swiper-slide stagger-item" data-color="beige">
+                                                    <div class="item">
+                                                        <img class="lazyload" data-src="{{data.image1}}" src="{{data.image1}}" alt="{{data.name}}">
+                                                    </div>
+                                                
+                                                    <div class="item mt-2">
+                                                        <img class="lazyload" data-src="{{data.image2}}" src="{{data.image2}}" alt="{{data.name}}">
+                                                    </div>
+                                                
+                                                    <div class="item mt-2">
+                                                        <img class="lazyload" data-src="{{data.image3}}" src="{{data.image3}}" alt="{{data.name}}">
+                                                    </div>
+                                                
+                                                    <div class="item mt-2">
+                                                        <img class="lazyload" data-src="{{data.image4}}" src="{{data.image4}}" alt="{{data.name}}">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div dir="ltr" class="swiper tf-product-media-main" id="gallery-swiper-started">
-                                        <div class="swiper-wrapper" >
-                                            <!-- beige -->
-                                            <div class="swiper-slide" data-color="beige">
-                                                <a href="{%static 'images/shop/products/p-d1.png" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod31.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod31.jpg'%}" src="images/shop/products/hmgoepprod31.jpg'%}" alt="">
-                                                </a>
+                                    
+                                        <div dir="ltr" class="swiper tf-product-media-main" id="gallery-swiper-started">
+                                            <div class="swiper-wrapper">
+                                                <!-- beige -->
+                                                <div class="swiper-slide" data-color="beige">
+                                                    <a href="{{data.image1}}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
+                                                        <img class="tf-image-zoom lazyload" data-zoom="{{data.image1}}" data-src="{{data.image1}}" src="{{data.image1}}" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="swiper-slide" data-color="beige">
+                                                    <a href="{{data.image2}}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
+                                                        <img class="tf-image-zoom lazyload" data-zoom="{{data.image2}}" data-src="{{data.image2}}" src="{{data.image2}}" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="swiper-slide" data-color="beige">
+                                                    <a href="{{data.image3}}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
+                                                        <img class="tf-image-zoom lazyload" data-zoom="{{data.image3}}" data-src="{{data.image3}}" src="{{data.image3}}" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="swiper-slide" data-color="beige">
+                                                    <a href="{{data.image4}}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
+                                                        <img class="tf-image-zoom lazyload" data-zoom="{{data.image4}}" data-src="{{data.image4}}" src="{{data.image4}}" alt="">
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <div class="swiper-slide" data-color="beige">
-                                                <a href="{%static 'images/shop/products/hmgoepprod.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod.jpg'%}" src="images/shop/products/hmgoepprod.jpg'%}" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="beige">
-                                                <a href="{%static 'images/shop/products/hmgoepprod2.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod2.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod2.jpg'%}" src="images/shop/products/hmgoepprod2.jpg'%}" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="beige">
-                                                <a href="{%static 'images/shop/products/hmgoepprod3.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod3.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod3.jpg'%}" src="images/shop/products/hmgoepprod3.jpg'%}" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="beige">
-                                                <a href="{%static 'images/shop/products/hmgoepprod4.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod4.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod4.jpg'%}" src="images/shop/products/hmgoepprod4.jpg'%}" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="beige">
-                                                <a href="{%static 'images/shop/products/hmgoepprod5.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod5.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod5.jpg'%}" src="images/shop/products/hmgoepprod5.jpg'%}" alt="">
-                                                </a>
-                                            </div>
-                                             <!-- black -->
-                                            <div class="swiper-slide" data-color="black">
-                                                <a href="{%static 'images/shop/products/hmgoepprod6.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod6.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod6.jpg'%}" src="images/shop/products/hmgoepprod6.jpg'%}" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="black">
-                                                <a href="{%static 'images/shop/products/hmgoepprod7.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod7.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod7.jpg'%}" src="images/shop/products/hmgoepprod7.jpg'%}" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="black">
-                                                <a href="{%static 'images/shop/products/hmgoepprod8.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod8.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod8.jpg'%}" src="images/shop/products/hmgoepprod8.jpg'%}" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="black">
-                                                <a href="{%static 'images/shop/products/hmgoepprod9.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                     <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod9.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod9.jpg'%}" src="images/shop/products/hmgoepprod9.jpg'%}" alt="">
-                                                </a>
-                                            </div>
-                                            <!-- blue -->
-                                            <div class="swiper-slide" data-color="blue">
-                                                <a href="{%static 'images/shop/products/hmgoepprod10.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod10.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod10.jpg'%}" src="images/shop/products/hmgoepprod10.jpg'%}" alt="img-product">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="blue">
-                                                <a href="{%static 'images/shop/products/hmgoepprod11.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod11.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod11.jpg'%}" src="images/shop/products/hmgoepprod11.jpg'%}" alt="img-product">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="blue">
-                                                <a href="{%static 'images/shop/products/hmgoepprod12.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod12.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod12.jpg'%}" src="images/shop/products/hmgoepprod12.jpg'%}" alt="img-product">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="blue">
-                                                <a href="{%static 'images/shop/products/hmgoepprod13.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                     <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod13.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod13.jpg'%}" src="images/shop/products/hmgoepprod13.jpg'%}" alt="img-product">
-                                                </a>
-                                            </div>
-                                            <!-- white -->
-                                            <div class="swiper-slide" data-color="white">
-                                                <a href="{%static 'images/shop/products/hmgoepprod14.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod14.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod14.jpg'%}" src="images/shop/products/hmgoepprod14.jpg'%}" alt="img-product">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="white">
-                                                <a href="{%static 'images/shop/products/hmgoepprod15.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod15.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod15.jpg'%}" src="images/shop/products/hmgoepprod15.jpg'%}" alt="img-product">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="white">
-                                                <a href="{%static 'images/shop/products/hmgoepprod16.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod16.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod16.jpg'%}" src="images/shop/products/hmgoepprod16.jpg'%}" alt="img-product">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide" data-color="white">
-                                                <a href="{%static 'images/shop/products/hmgoepprod17.jpg'%}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                                     <img class="tf-image-zoom lazyload" data-zoom="images/shop/products/hmgoepprod17.jpg'%}" data-src="{%static 'images/shop/products/hmgoepprod17.jpg'%}" src="images/shop/products/hmgoepprod17.jpg'%}" alt="img-product">
-                                                </a>
-                                            </div>
+                                            <div class="swiper-button-next button-style-arrow thumbs-next"></div>
+                                            <div class="swiper-button-prev button-style-arrow thumbs-prev"></div>
                                         </div>
-                                        <div class="swiper-button-next button-style-arrow thumbs-next"></div>
-                                        <div class="swiper-button-prev button-style-arrow thumbs-prev"></div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    const mainGallerySwiper = new Swiper('.tf-product-media-main', {
+                                        loop: true,
+                                        spaceBetween: 10,
+                                        navigation: {
+                                            nextEl: '.swiper-button-next',
+                                            prevEl: '.swiper-button-prev',
+                                        },
+                                        zoom: {
+                                            maxRatio: 3,
+                                            toggle: true,
+                                        },
+                                    });
+                                
+                                    const thumbSwiper = new Swiper('.tf-product-media-thumbs', {
+                                        direction: 'vertical',
+                                        loop: true,
+                                        slidesPerView: 6,
+                                        spaceBetween: 10,
+                                        slideToClickedSlide: true,
+                                        watchSlidesVisibility: true,
+                                    });
+                                
+                                    mainGallerySwiper.controller.control = thumbSwiper;
+                                    thumbSwiper.controller.control = mainGallerySwiper;
+                                });
+                            </script>
+
                         <div class="col-md-6">
                             <div class="tf-product-info-wrap position-relative">
                                 <div class="tf-zoom-main"></div>
                                 <div class="tf-product-info-list other-image-zoom">
                                     <div class="tf-product-info-title">
-                                        <h5>Cotton jersey top</h5>
-                                    </div>
-                                    <div class="tf-product-info-badges">
-                                        <div class="badges">Best seller</div>
-                                        <div class="product-status-content">
-                                            <i class="icon-lightning"></i>
-                                            <p class="fw-6">Selling fast! 56 people have  this in their carts.</p>
-                                        </div>
+                                        <h5>{{data.name}}</h5>
                                     </div>
                                     <div class="tf-product-info-price">
-                                        <div class="price-on-sale">$8.00</div>
-                                        <div class="compare-at-price">$30.00</div>
-                                        <div class="badges-on-sale"><span>20</span>% OFF</div>
+                                        <div class="price-on-sale text_black">&#8377; {{data.price}}
+                                            <span style="font-size:15px;color:red"><del>{{data.base_price}}</del></span>
+                                        </div>
                                     </div>
                                     <div class="tf-product-info-liveview">
                                         <div class="liveview-count">20</div>
                                         <p class="fw-6">People are viewing this right now</p>
                                     </div>
-                                    <div class="tf-product-info-countdown">
-                                        <div class="countdown-wrap">
-                                            <div class="countdown-title">
-                                                <i class="icon-time tf-ani-tada"></i>
-                                                <p>HURRY UP! SALE ENDS IN:</p>
-                                            </div>
-                                            <div class="tf-countdown style-1">
-                                                <div class="js-countdown" data-timer="1007500" data-labels="Days :,Hours :,Mins :,Secs"></div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="tf-product-info-variant-picker">
                                         <div class="variant-picker-item">
                                             <div class="variant-picker-label">
-                                                Color: <span class="fw-6 variant-picker-label-value value-currentColor">Beige</span>
+                                                Color: <span class="fw-6 variant-picker-label-value value-currentColor">{{data.color}}</span>
                                             </div>
                                             <div class="variant-picker-values">
-                                                <input id="values-beige" type="radio" name="color1" checked>
-                                                <label class="hover-tooltip radius-60 color-btn" for="values-beige" data-color="beige" data-value="Beige">
-                                                    <span class="btn-checkbox bg-color-beige"></span>
-                                                    <span class="tooltip">Beige</span>
+                                                {%for item in skuProduct%}
+                                                <input type="radio" name="color1" id="color-1" checked>
+                                                <label class="style-image hover-tooltip color-btn" data-color="beige" for="color-1" data-value="Beige">
+                                                    <div>
+                                                        <div class="image">
+                                                            <img class=" lazyloaded" data-src="{%static 'images/shop/products/hmgoepprod.jpg'%}" alt="" src="{%static 'images/shop/products/hmgoepprod.jpg'%}">
+                                                        </div>
+                                                    </div>
+                                                     <span class="tooltip">Beige</span>
                                                 </label>
-                                                <input id="values-black" type="radio" name="color1">
-                                                <label class=" hover-tooltip radius-60 color-btn" data-price="9" for="values-black" data-color="black" data-value="Black">
-                                                    <span class="btn-checkbox bg-color-black"></span>
-                                                    <span class="tooltip">Black</span>
-                                                </label>
-                                                <input id="values-blue" type="radio" name="color1">
-                                                <label class="hover-tooltip radius-60 color-btn" data-price="10" for="values-blue" data-color="blue" data-value="Blue">
-                                                    <span class="btn-checkbox bg-color-blue"></span>
-                                                    <span class="tooltip">Blue</span>
-                                                </label>
-                                                <input id="values-white" type="radio" name="color1">
-                                                <label class="hover-tooltip radius-60 color-btn" data-price="12" for="values-white" data-color="white" data-value="White">
-                                                    <span class="btn-checkbox bg-color-white"></span>
-                                                    <span class="tooltip">White</span>
-                                                </label>
+                                                
+                                                {%endfor%}
                                             </div>
                                         </div>
                                         <div class="variant-picker-item">
@@ -314,15 +171,15 @@
                                                     <p>S</p>
                                                 </label>
                                                 <input type="radio" name="size1" id="values-m">
-                                                <label class="style-text size-btn" data-price="9" for="values-m" data-value="M">
-                                                    <P>M</P>
+                                                <label class="style-text size-btn" for="values-m" data-value="M">
+                                                    <p>M</p>
                                                 </label>
                                                 <input type="radio" name="size1" id="values-l">
-                                                <label class="style-text size-btn" data-price="10" for="values-l" data-value="L">
+                                                <label class="style-text size-btn" for="values-l" data-value="L">
                                                     <p>L</p>
                                                 </label>
                                                 <input type="radio" name="size1" id="values-xl">
-                                                <label class="style-text size-btn" data-price="12" for="values-xl" data-value="XL">
+                                                <label class="style-text size-btn" for="values-xl" data-value="XL">
                                                     <p>XL</p>
                                                 </label>
                                             </div>
@@ -332,13 +189,13 @@
                                         <div class="quantity-title fw-6">Quantity</div>
                                         <div class="wg-quantity">
                                             <span class="btn-quantity btn-decrease">-</span>
-                                            <input type="text" class="quantity-product" name="number" value="1">
+                                            <input type="text" class="quantity-product" name="number" value="{{data.quantity}}">
                                             <span class="btn-quantity btn-increase">+</span>
                                         </div>
                                     </div>
                                     <div class="tf-product-info-buy-button">
                                         <form class="">
-                                            <a href="javascript:void(0);" class="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn btn-add-to-cart"><span>Add to cart -&nbsp;</span><span class="tf-qty-price total-price">$8.00</span></a>
+                                            <a href="javascript:void(0);" class="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn btn-add-to-cart"><span>Add to cart -&nbsp;</span><span class="tf-qty-price total-price">$18.00</span></a>
                                             <a href="javascript:void(0);" class="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action">
                                                 <span class="icon icon-heart"></span>
                                                 <span class="tooltip">Add to Wishlist</span>
@@ -350,7 +207,7 @@
                                                 <span class="icon icon-check"></span>
                                             </a>
                                             <div class="w-100">
-                                                <a href="#" class="btns-full">Buy with <img src="images/payments/paypal.png" alt=""></a>
+                                                <a href="#" class="btns-full">Buy with <img src="{%static 'images/payments/paypal.png'%}" alt=""></a>
                                                 <a href="#" class="payment-more-option">More payment options</a>
                                             </div>
                                         </form>
@@ -358,7 +215,7 @@
                                     <div class="tf-product-info-extra-link">
                                         <a href="#compare_color" data-bs-toggle="modal" class="tf-product-extra-icon">
                                             <div class="icon">
-                                                <img src="images/item/compare.svg" alt="">
+                                                <img src="{%static 'images/item/compare.svg'%}" alt="">
                                             </div>
                                             <div class="text fw-6">Compare color</div>
                                         </a>
@@ -407,11 +264,11 @@
                                             <p class="fw-6">Guarantee Safe <br> Checkout</p>
                                         </div>
                                         <div class="tf-payment">
-                                            <img src="images/payments/visa.png" alt="">
-                                            <img src="images/payments/img-1.png" alt="">
-                                            <img src="images/payments/img-2.png" alt="">
-                                            <img src="images/payments/img-3.png" alt="">
-                                            <img src="images/payments/img-4.png" alt="">
+                                            <img src="{%static 'images/payments/visa.png'%}" alt="">
+                                            <img src="{%static 'images/payments/img-1.png'%}" alt="">
+                                            <img src="{%static 'images/payments/img-2.png'%}" alt="">
+                                            <img src="{%static 'images/payments/img-3.png'%}" alt="">
+                                            <img src="{%static 'images/payments/img-4.png'%}" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -425,9 +282,9 @@
                     <div class="tf-height-observer w-100 d-flex align-items-center">
                         <div class="tf-sticky-atc-product d-flex align-items-center">
                             <div class="tf-sticky-atc-img">
-                                <img class="lazyloaded" data-src="{%static 'images/shop/products/p-d1.png" alt="" src="images/shop/products/p-d1.png">
+                                <img class="lazyloaded" data-src="{{data.image1}}" alt="" src="{{data.image1}}">
                             </div>
-                            <div class="tf-sticky-atc-title fw-5 d-xl-block d-none">Cotton jersey top</div>
+                            <div class="tf-sticky-atc-title fw-5 d-xl-block d-none">{{data.name}}</div>
                         </div>
                         <div class="tf-sticky-atc-infos">
                             <form class="">
@@ -438,17 +295,6 @@
                                         <option>Beige / L - $8.00</option>
                                         <option>Beige / XL - $8.00</option>
                                         <option>Black / S - $8.00</option>
-                                        <option>Black / M - $8.00</option>
-                                        <option>Black / L - $8.00</option>
-                                        <option>Black / XL - $8.00</option>
-                                        <option>Blue / S - $8.00</option>
-                                        <option>Blue / M - $8.00</option>
-                                        <option>Blue / L - $8.00</option>
-                                        <option>Blue / XL - $8.00</option>
-                                        <option>White / S - $8.00</option>
-                                        <option>White / M - $8.00</option>
-                                        <option>White / L - $8.00</option>
-                                        <option>White / XL - $8.00</option>
                                     </select>
                                 </div>
                                 <div class="tf-sticky-atc-btns">
@@ -495,78 +341,24 @@
                                 <div class="widget-content-inner active">
                                     <div class="">
                                         <p class="mb_30">
-                                            Button-up shirt sleeves and a relaxed silhouette. It’s tailored with drapey,
-                                            crinkle-texture fabric that’s made from LENZING™ ECOVERO™ Viscose — responsibly
-                                            sourced wood-based
-                                            fibres produced through a process that reduces impact on forests, biodiversity and
-                                            water supply.
+                                            {{data.description}}
                                         </p>
-                                        <div class="tf-product-des-demo">
-                                            <div class="right">
-                                                <h3 class="fs-16 fw-5">Features</h3>
-                                                <ul>
-                                                  <li>Front button placket</li>
-                                                  <li> Adjustable sleeve tabs</li>
-                                                  <li>Babaton embroidered crest at placket and hem</li>
-                                                </ul>
-                                                <h3 class="fs-16 fw-5">Materials Care</h3>
-                                                <ul class="mb-0">
-                                                  <li>Content: 100% LENZING™ ECOVERO™ Viscose</li>
-                                                  <li>Care: Hand wash</li>
-                                                  <li>Imported</li>
-                                                </ul>
-                                            </div>
-                                            <div class="left">
-                                                <h3 class="fs-16 fw-5">Materials Care</h3>
-                                                <div class="d-flex gap-10 mb_15 align-items-center">
-                                                    <div class="icon">
-                                                        <i class="icon-machine"></i>
-                                                    </div>
-                                                  <span>Machine wash max. 30ºC. Short spin.</span>
-                                                </div>
-                                                <div class="d-flex gap-10 mb_15 align-items-center">
-                                                    <div class="icon">
-                                                        <i class="icon-iron"></i>
-                                                    </div>
-                                                    <span>Iron maximum 110ºC.</span>
-                                                </div>
-                                                <div class="d-flex gap-10 mb_15 align-items-center">
-                                                    <div class="icon">
-                                                        <i class="icon-bleach"></i>
-                                                    </div>
-                                                    <span>Do not bleach/bleach.</span>
-                                                </div>
-                                                <div class="d-flex gap-10 mb_15 align-items-center">
-                                                    <div class="icon">
-                                                        <i class="icon-dry-clean"></i>
-                                                    </div>
-                                                    <span>Do not dry clean.</span>
-                                                </div>
-                                                <div class="d-flex gap-10 align-items-center">
-                                                    <div class="icon">
-                                                        <i class="icon-tumble-dry"></i>
-                                                    </div>
-                                                    <span>Tumble dry, medium hear.</span>
-                                                </div>
-                                              </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="widget-content-inner">
-                                    <table class="tf-pr-attrs">
+                                    <table class="tf-pr-attrs w-50">
                                         <tbody>
                                             <tr class="tf-attr-pa-color">
-                                                <th class="tf-attr-label">Color</th>
-                                                <td class="tf-attr-value">
-                                                    <p>White, Pink, Black</p>
-                                                </td>
+                                                <th class="tf-attr-label">Specification</th>
+                                                <th class="tf-attr-label">Details</th>
                                             </tr>
+                                            {% for key, value in data.specifications.items %}
                                             <tr class="tf-attr-pa-size">
-                                                <th class="tf-attr-label">Size</th>
-                                                <td class="tf-attr-value">
-                                                    <p>S, M, L, XL</p>
-                                                </td>
+                                                <td class="tf-attr-value border"> {{ key }}</td>
+                                                <td class="tf-attr-value"> {{ value }}</td>
                                             </tr>
+                                            {%endfor%}
                                         </tbody>
                                     </table>
                                 </div>
@@ -661,7 +453,7 @@
                                                 <div class="reply-comment-item">
                                                     <div class="user">
                                                         <div class="image">
-                                                            <img src="images/collections/collection-circle-9.jpg'%}" alt="">
+                                                            <img src="{%static 'images/collections/collection-circle-9.jpg'%}" alt="">
                                                         </div>
                                                         <div>
                                                             <h6>
@@ -675,7 +467,7 @@
                                                 <div class="reply-comment-item type-reply">
                                                     <div class="user">
                                                         <div class="image">
-                                                            <img src="images/collections/collection-circle-10.jpg'%}" alt="">
+                                                            <img src="{%static 'images/collections/collection-circle-10.jpg'%}" alt="">
                                                         </div>
                                                         <div>
                                                             <h6>
@@ -689,7 +481,7 @@
                                                 <div class="reply-comment-item">
                                                     <div class="user">
                                                         <div class="image">
-                                                            <img src="images/collections/collection-circle-9.jpg'%}" alt="">
+                                                            <img src="{%static 'images/collections/collection-circle-9.jpg'%}" alt="">
                                                         </div>
                                                         <div>
                                                             <h6>
@@ -827,12 +619,13 @@
                 <div class="hover-sw-nav hover-sw-2">
                     <div dir="ltr" class="swiper tf-sw-product-sell wrap-sw-over" data-preview="4" data-tablet="3" data-mobile="2" data-space-lg="30" data-space-md="15" data-pagination="2" data-pagination-md="3" data-pagination-lg="3">
                         <div class="swiper-wrapper">
+                            {%for item in similarProduct%}
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/orange-1.jpg'%}" src="images/products/orange-1.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/white-1.jpg'%}" src="images/products/white-1.jpg'%}" alt="image-product">
+                                        <a href="/product-details/{{item.name|slugify}}-{{item.id}}" class="product-img">
+                                            <img class="lazyload img-product" data-src="{{item.image1}}" src="{{item.image1}}" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="{{item.image2}}" src="{{item.image2}}" alt="image-product">
                                         </a>
                                         <div class="list-product-btn">
                                             <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
@@ -862,305 +655,14 @@
                                         </div>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="/product-detail" class="title link">Ribbed Tank Top</a>
-                                        <span class="price">$16.95</span>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="tooltip">Orange</span>
-                                                <span class="swatch-value bg_orange-3"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/orange-1.jpg'%}" src="images/products/orange-1.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">Black</span>
-                                                <span class="swatch-value bg_dark"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/black-1.jpg'%}" src="images/products/black-1.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">White</span>
-                                                <span class="swatch-value bg_white"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/white-1.jpg'%}" src="images/products/white-1.jpg'%}" alt="image-product">
-                                            </li>
-                                        </ul>
+                                        <a href="product-detail.html" class="title link">{{item.name}}</a>
+                                        <span class="price">&#8377; {{item.price}}</span>
+                                        
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide" lazy="true">
-                                <div class="card-product">
-                                    <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/brown.jpg'%}" src="images/products/brown.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/purple.jpg'%}" src="images/products/purple.jpg'%}" alt="image-product">
-                                        </a>
-                                        <div class="list-product-btn">
-                                            <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                <span class="icon icon-bag"></span>
-                                                <span class="tooltip">Quick Add</span>
-                                            </a>
-                                            <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                <span class="icon icon-heart"></span>
-                                                <span class="tooltip">Add to Wishlist</span>
-                                                <span class="icon icon-delete"></span>
-                                            </a>
-                                            <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                <span class="icon icon-compare"></span>
-                                                <span class="tooltip">Add to Compare</span>
-                                                <span class="icon icon-check"></span>
-                                            </a>
-                                            <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                <span class="icon icon-view"></span>
-                                                <span class="tooltip">Quick View</span>
-                                            </a>
-                                        </div>
-                                        <div class="size-list">
-                                            <span>M</span>
-                                            <span>L</span>
-                                            <span>XL</span>
-                                        </div>
-                                        <div class="on-sale-wrap">
-                                            <div class="on-sale-item">-33%</div>
-                                        </div>
-                                        <div class="countdown-box">
-                                            <div class="js-countdown" data-timer="1007500" data-labels="d :,h :,m :,s"></div>
-                                        </div>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="/product-detail" class="title link">Ribbed modal T-shirt</a>
-                                        <span class="price">From $18.95</span>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="tooltip">Brown</span>
-                                                <span class="swatch-value bg_brown"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/brown.jpg'%}" src="images/products/brown.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">Light Purple</span>
-                                                <span class="swatch-value bg_purple"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/purple.jpg'%}" src="images/products/purple.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">Light Green</span>
-                                                <span class="swatch-value bg_light-green"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/green.jpg'%}" src="images/products/green.jpg'%}" alt="image-product">
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" lazy="true">
-                                <div class="card-product">
-                                    <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/white-3.jpg'%}" src="images/products/white-3.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/white-4.jpg'%}" src="images/products/white-4.jpg'%}" alt="image-product">
-                                        </a>
-                                        <div class="list-product-btn">
-                                            <a href="#shoppingCart" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                <span class="icon icon-bag"></span>
-                                                <span class="tooltip">Add to cart</span>
-                                            </a>
-                                            <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                <span class="icon icon-heart"></span>
-                                                <span class="tooltip">Add to Wishlist</span>
-                                                <span class="icon icon-delete"></span>
-                                            </a>
-                                            <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                <span class="icon icon-compare"></span>
-                                                <span class="tooltip">Add to Compare</span>
-                                                <span class="icon icon-check"></span>
-                                            </a>
-                                            <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                <span class="icon icon-view"></span>
-                                                <span class="tooltip">Quick View</span>
-                                            </a>
-                                        </div>
-                                        <div class="size-list">
-                                            <span>S</span>
-                                            <span>M</span>
-                                            <span>L</span>
-                                            <span>XL</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="/product-detail" class="title link">Oversized Printed T-shirt</a>
-                                        <span class="price">$10.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" lazy="true">
-                                <div class="card-product">
-                                    <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/white-2.jpg'%}" src="images/products/white-2.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/pink-1.jpg'%}" src="images/products/pink-1.jpg'%}" alt="image-product">
-                                        </a>
-                                        <div class="list-product-btn">
-                                            <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                <span class="icon icon-bag"></span>
-                                                <span class="tooltip">Quick Add</span>
-                                            </a>
-                                            <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                <span class="icon icon-heart"></span>
-                                                <span class="tooltip">Add to Wishlist</span>
-                                                <span class="icon icon-delete"></span>
-                                            </a>
-                                            <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                <span class="icon icon-compare"></span>
-                                                <span class="tooltip">Add to Compare</span>
-                                                <span class="icon icon-check"></span>
-                                            </a>
-                                            <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                <span class="icon icon-view"></span>
-                                                <span class="tooltip">Quick View</span>
-                                            </a>
-                                        </div>
-                                        <div class="size-list">
-                                            <span>S</span>
-                                            <span>M</span>
-                                            <span>L</span>
-                                            <span>XL</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="/product-detail" class="title">Oversized Printed T-shirt</a>
-                                        <span class="price">$16.95</span>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="tooltip">White</span>
-                                                <span class="swatch-value bg_white"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/white-2.jpg'%}" src="images/products/white-2.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">Pink</span>
-                                                <span class="swatch-value bg_purple"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/pink-1.jpg'%}" src="images/products/pink-1.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">Black</span>
-                                                <span class="swatch-value bg_dark"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/black-2.jpg'%}" src="images/products/black-2.jpg'%}" alt="image-product">
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" lazy="true">
-                                <div class="card-product">
-                                    <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/brown-2.jpg'%}" src="images/products/brown-2.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/brown-3.jpg'%}" src="images/products/brown-3.jpg'%}" alt="image-product">
-                                        </a>
-                                        <div class="size-list">
-                                            <span>S</span>
-                                            <span>M</span>
-                                            <span>L</span>
-                                            <span>XL</span>
-                                        </div>
-                                        <div class="list-product-btn">
-                                            <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                <span class="icon icon-bag"></span>
-                                                <span class="tooltip">Quick Add</span>
-                                            </a>
-                                            <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                <span class="icon icon-heart"></span>
-                                                <span class="tooltip">Add to Wishlist</span>
-                                                <span class="icon icon-delete"></span>
-                                            </a>
-                                            <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                <span class="icon icon-compare"></span>
-                                                <span class="tooltip">Add to Compare</span>
-                                                <span class="icon icon-check"></span>
-                                            </a>
-                                            <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                <span class="icon icon-view"></span>
-                                                <span class="tooltip">Quick View</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="/product-detail" class="title link">V-neck linen T-shirt</a>
-                                        <span class="price">$114.95</span>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="tooltip">Brown</span>
-                                                <span class="swatch-value bg_brown"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/brown-2.jpg'%}" src="images/products/brown-2.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">White</span>
-                                                <span class="swatch-value bg_white"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/white-5.jpg'%}" src="images/products/white-5.jpg'%}" alt="image-product">
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" lazy="true">
-                                <div class="card-product">
-                                    <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/light-green-1.jpg'%}" src="images/products/light-green-1.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/light-green-2.jpg'%}" src="images/products/light-green-2.jpg'%}" alt="image-product">
-                                        </a>
-                                        <div class="list-product-btn absolute-2">
-                                            <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                <span class="icon icon-bag"></span>
-                                                <span class="tooltip">Quick Add</span>
-                                            </a>
-                                            <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                <span class="icon icon-heart"></span>
-                                                <span class="tooltip">Add to Wishlist</span>
-                                                <span class="icon icon-delete"></span>
-                                            </a>
-                                            <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                <span class="icon icon-compare"></span>
-                                                <span class="tooltip">Add to Compare</span>
-                                                <span class="icon icon-check"></span>
-                                            </a>
-                                            <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                <span class="icon icon-view"></span>
-                                                <span class="tooltip">Quick View</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="/product-detail" class="title link">Loose Fit Sweatshirt</a>
-                                        <span class="price">$10.00</span>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="tooltip">Light Green</span>
-                                                <span class="swatch-value bg_light-green"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/light-green-1.jpg'%}" src="images/products/light-green-1.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">Black</span>
-                                                <span class="swatch-value bg_dark"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/black-3.jpg'%}" src="images/products/black-3.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">Blue</span>
-                                                <span class="swatch-value bg_blue-2"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/blue.jpg'%}" src="images/products/blue.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">Dark Blue</span>
-                                                <span class="swatch-value bg_dark-blue"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/dark-blue.jpg'%}" src="images/products/dark-blue.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">White</span>
-                                                <span class="swatch-value bg_white"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/white-6.jpg'%}" src="images/products/white-6.jpg'%}" alt="image-product">
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">Light Grey</span>
-                                                <span class="swatch-value bg_light-grey"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/light-grey.jpg'%}" src="images/products/light-grey.jpg'%}" alt="image-product">
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            {%endfor%}
+                            
                         </div>
                     </div>
                     <div class="nav-sw nav-next-slider nav-next-product box-icon w_46 round"><span class="icon icon-arrow-left"></span></div>
@@ -1182,9 +684,9 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/light-green-1.jpg'%}" src="images/products/light-green-1.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/light-green-2.jpg'%}" src="images/products/light-green-2.jpg'%}" alt="image-product">
+                                        <a href="product-detail.html" class="product-img">
+                                            <img class="lazyload img-product" data-src="{%static 'images/products/light-green-1.jpg'%}" src="{%static 'images/products/light-green-1.jpg'%}" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="{%static 'images/products/light-green-2.jpg'%}" src="{%static 'images/products/light-green-2.jpg'%}" alt="image-product">
                                         </a>
                                         <div class="list-product-btn absolute-2">
                                             <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
@@ -1208,38 +710,38 @@
                                         </div>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="/product-detail" class="title link">Loose Fit Sweatshirt</a>
+                                        <a href="product-detail.html" class="title link">Loose Fit Sweatshirt</a>
                                         <span class="price">$10.00</span>
                                         <ul class="list-color-product">
                                             <li class="list-color-item color-swatch active">
                                                 <span class="tooltip">Light Green</span>
                                                 <span class="swatch-value bg_light-green"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/light-green-1.jpg'%}" src="images/products/light-green-1.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/light-green-1.jpg'%}" src="{%static 'images/products/light-green-1.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Black</span>
                                                 <span class="swatch-value bg_dark"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/black-3.jpg'%}" src="images/products/black-3.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/black-3.jpg'%}" src="{%static 'images/products/black-3.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Blue</span>
                                                 <span class="swatch-value bg_blue-2"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/blue.jpg'%}" src="images/products/blue.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/blue.jpg'%}" src="{%static 'images/products/blue.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Dark Blue</span>
                                                 <span class="swatch-value bg_dark-blue"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/dark-blue.jpg'%}" src="images/products/dark-blue.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/dark-blue.jpg'%}" src="{%static 'images/products/dark-blue.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">White</span>
                                                 <span class="swatch-value bg_white"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/white-6.jpg'%}" src="images/products/white-6.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/white-6.jpg'%}" src="{%static 'images/products/white-6.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Light Grey</span>
                                                 <span class="swatch-value bg_light-grey"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/light-grey.jpg'%}" src="images/products/light-grey.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/light-grey.jpg'%}" src="{%static 'images/products/light-grey.jpg'%}" alt="image-product">
                                             </li>
                                         </ul>
                                     </div>
@@ -1248,9 +750,9 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/brown-2.jpg'%}" src="images/products/brown-2.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/brown-3.jpg'%}" src="images/products/brown-3.jpg'%}" alt="image-product">
+                                        <a href="product-detail.html" class="product-img">
+                                            <img class="lazyload img-product" data-src="{%static 'images/products/brown-2.jpg'%}" src="{%static 'images/products/brown-2.jpg'%}" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="{%static 'images/products/brown-3.jpg'%}" src="{%static 'images/products/brown-3.jpg'%}" alt="image-product">
                                         </a>
                                         <div class="size-list">
                                             <span>S</span>
@@ -1280,18 +782,18 @@
                                         </div>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="/product-detail" class="title link">V-neck linen T-shirt</a>
+                                        <a href="product-detail.html" class="title link">V-neck linen T-shirt</a>
                                         <span class="price">$114.95</span>
                                         <ul class="list-color-product">
                                             <li class="list-color-item color-swatch active">
                                                 <span class="tooltip">Brown</span>
                                                 <span class="swatch-value bg_brown"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/brown-2.jpg'%}" src="images/products/brown-2.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/brown-2.jpg'%}" src="{%static 'images/products/brown-2.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">White</span>
                                                 <span class="swatch-value bg_white"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/white-5.jpg'%}" src="images/products/white-5.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/white-5.jpg'%}" src="{%static 'images/products/white-5.jpg'%}" alt="image-product">
                                             </li>
                                         </ul>
                                     </div>
@@ -1300,9 +802,9 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/white-2.jpg'%}" src="images/products/white-2.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/pink-1.jpg'%}" src="images/products/pink-1.jpg'%}" alt="image-product">
+                                        <a href="product-detail.html" class="product-img">
+                                            <img class="lazyload img-product" data-src="{%static 'images/products/white-2.jpg'%}" src="{%static 'images/products/white-2.jpg'%}" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="{%static 'images/products/pink-1.jpg'%}" src="{%static 'images/products/pink-1.jpg'%}" alt="image-product">
                                         </a>
                                         <div class="list-product-btn">
                                             <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
@@ -1332,23 +834,23 @@
                                         </div>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="/product-detail" class="title">Oversized Printed T-shirt</a>
+                                        <a href="product-detail.html" class="title">Oversized Printed T-shirt</a>
                                         <span class="price">$16.95</span>
                                         <ul class="list-color-product">
                                             <li class="list-color-item color-swatch active">
                                                 <span class="tooltip">White</span>
                                                 <span class="swatch-value bg_white"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/white-2.jpg'%}" src="images/products/white-2.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/white-2.jpg'%}" src="{%static 'images/products/white-2.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Pink</span>
                                                 <span class="swatch-value bg_purple"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/pink-1.jpg'%}" src="images/products/pink-1.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/pink-1.jpg'%}" src="{%static 'images/products/pink-1.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Black</span>
                                                 <span class="swatch-value bg_dark"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/black-2.jpg'%}" src="images/products/black-2.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/black-2.jpg'%}" src="{%static 'images/products/black-2.jpg'%}" alt="image-product">
                                             </li>
                                         </ul>
                                     </div>
@@ -1357,9 +859,9 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/white-3.jpg'%}" src="images/products/white-3.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/white-4.jpg'%}" src="images/products/white-4.jpg'%}" alt="image-product">
+                                        <a href="product-detail.html" class="product-img">
+                                            <img class="lazyload img-product" data-src="{%static 'images/products/white-3.jpg'%}" src="{%static 'images/products/white-3.jpg'%}" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="{%static 'images/products/white-4.jpg'%}" src="{%static 'images/products/white-4.jpg'%}" alt="image-product">
                                         </a>
                                         <div class="list-product-btn">
                                             <a href="#shoppingCart" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
@@ -1389,7 +891,7 @@
                                         </div>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="/product-detail" class="title link">Oversized Printed T-shirt</a>
+                                        <a href="product-detail.html" class="title link">Oversized Printed T-shirt</a>
                                         <span class="price">$10.00</span>
                                     </div>
                                 </div>
@@ -1397,9 +899,9 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/brown.jpg'%}" src="images/products/brown.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/purple.jpg'%}" src="images/products/purple.jpg'%}" alt="image-product">
+                                        <a href="product-detail.html" class="product-img">
+                                            <img class="lazyload img-product" data-src="{%static 'images/products/brown.jpg'%}" src="{%static 'images/products/brown.jpg'%}" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="{%static 'images/products/purple.jpg'%}" src="{%static 'images/products/purple.jpg'%}" alt="image-product">
                                         </a>
                                         <div class="list-product-btn">
                                             <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
@@ -1434,23 +936,23 @@
                                         </div>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="/product-detail" class="title link">Ribbed modal T-shirt</a>
+                                        <a href="product-detail.html" class="title link">Ribbed modal T-shirt</a>
                                         <span class="price">From $18.95</span>
                                         <ul class="list-color-product">
                                             <li class="list-color-item color-swatch active">
                                                 <span class="tooltip">Brown</span>
                                                 <span class="swatch-value bg_brown"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/brown.jpg'%}" src="images/products/brown.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/brown.jpg'%}" src="{%static 'images/products/brown.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Light Purple</span>
                                                 <span class="swatch-value bg_purple"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/purple.jpg'%}" src="images/products/purple.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/purple.jpg'%}" src="{%static 'images/products/purple.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Light Green</span>
                                                 <span class="swatch-value bg_light-green"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/green.jpg'%}" src="images/products/green.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/green.jpg'%}" src="{%static 'images/products/green.jpg'%}" alt="image-product">
                                             </li>
                                         </ul>
                                     </div>
@@ -1459,9 +961,9 @@
                             <div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="/product-detail" class="product-img">
-                                            <img class="lazyload img-product" data-src="{%static 'images/products/orange-1.jpg'%}" src="images/products/orange-1.jpg'%}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="{%static 'images/products/white-1.jpg'%}" src="images/products/white-1.jpg'%}" alt="image-product">
+                                        <a href="product-detail.html" class="product-img">
+                                            <img class="lazyload img-product" data-src="{%static 'images/products/orange-1.jpg'%}" src="{%static 'images/products/orange-1.jpg'%}" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="{%static 'images/products/white-1.jpg'%}" src="{%static 'images/products/white-1.jpg'%}" alt="image-product">
                                         </a>
                                         <div class="list-product-btn">
                                             <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
@@ -1491,23 +993,23 @@
                                         </div>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="/product-detail" class="title link">Ribbed Tank Top</a>
+                                        <a href="product-detail.html" class="title link">Ribbed Tank Top</a>
                                         <span class="price">$16.95</span>
                                         <ul class="list-color-product">
                                             <li class="list-color-item color-swatch active">
                                                 <span class="tooltip">Orange</span>
                                                 <span class="swatch-value bg_orange-3"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/orange-1.jpg'%}" src="images/products/orange-1.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/orange-1.jpg'%}" src="{%static 'images/products/orange-1.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Black</span>
                                                 <span class="swatch-value bg_dark"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/black-1.jpg'%}" src="images/products/black-1.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/black-1.jpg'%}" src="{%static 'images/products/black-1.jpg'%}" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">White</span>
                                                 <span class="swatch-value bg_white"></span>
-                                                <img class="lazyload" data-src="{%static 'images/products/white-1.jpg'%}" src="images/products/white-1.jpg'%}" alt="image-product">
+                                                <img class="lazyload" data-src="{%static 'images/products/white-1.jpg'%}" src="{%static 'images/products/white-1.jpg'%}" alt="image-product">
                                             </li>
                                         </ul>
                                     </div>
@@ -1522,4 +1024,4 @@
             </div>
         </section>
         <!-- /recent -->
-{%endblock%}
+    {%endblock%}

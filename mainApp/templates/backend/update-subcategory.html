@@ -1,0 +1,109 @@
+{% extends 'backend/index.html' %}
+{% load static %}
+{% block body %}
+<script>
+    function validateForm() {
+        var name = document.getElementById("name").value.trim();
+        var currentCategory = "{{ data.category.name|escapejs }}";
+        var currentName = "{{ data.name|escapejs }}";
+
+        var existingNames = [];
+        {% for item in categories %}
+            existingNames.push("{{ item.name|escapejs }}");
+        {% endfor %}
+
+        console.log("Existing Names:", existingNames);
+        console.log("Entered Name:", name);
+
+        if (existingNames.includes(name)) {
+            alert("Subcategory with this name already exists under the selected category.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+{% if messages %}
+<div class="container">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} mt-2" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="w-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="text-center">Update Subcategory</h4>
+                        <form method="post" enctype="multipart/form-data" onsubmit="return validateForm();">
+                            {% csrf_token %}
+                            <div class="row">
+                                <!-- Category Selection -->
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Category Name<span class="text-danger">*</span></label>
+                                        <select name="category" class="form-control" required>
+                                            {% for item in scat %}
+                                            <option value="{{ item.id }}" {% if item.id == data.category.id %}selected{% endif %}>{{ item.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Subcategory Name -->
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Name<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ data.name }}" required>
+                                    </div>
+                                </div>
+
+                                <!-- Image -->
+                                {% if data.image %}
+                                <div class="col-lg-1 mt-4">
+                                    <div class="mb-3">
+                                        <img src="{{ data.image }}" alt="Subcategory Image" class="img-thumbnail" width="50">
+                                    </div>
+                                </div>
+                                {% endif %}
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Icon</label>
+                                        <input type="file" accept=".png,.jpg,.jpeg,.webp" class="form-control" name="image">
+                                    </div>
+                                </div>
+
+                                <!-- Meta Title -->
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Meta Title</label>
+                                        <input type="text" class="form-control" name="title" value="{{ data.title }}">
+                                    </div>
+                                </div>
+
+                                <!-- Meta Description -->
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Meta Description</label>
+                                        <textarea name="description" class="form-control" rows="2">{{ data.description }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary mt-4" style="padding: 2px 50px;">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
