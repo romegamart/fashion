@@ -71,7 +71,7 @@
                 <div class="tf-row-flex">
                     <div class="tf-shop-sidebar wrap-sidebar-mobile">
                         
-                        <form id="facet-filter-form" class="facet-filter-form" method="get">
+                        <form id="facet-filter-form" class="facet-filter-form" method="get" action="/offers/all">
                             <!-- Maincategory Filter -->
                             <div class="widget-facet">
                                 <div class="facet-title" data-bs-target="#maincategory" data-bs-toggle="collapse" aria-expanded="true" aria-controls="maincategory">
@@ -258,28 +258,38 @@
                             </div>
                             {%endfor%}
                             <!-- card product 2 -->
-                            
                         </div>
-                        <!-- pagination -->
+                        
+                        <!-- Pagination -->
                         <ul class="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
-                            <li class="active">
-                                <a href="#" class="pagination-link">1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="pagination-link animate-hover-btn">2</a>
-                            </li>
-                            <li>
-                                <a href="#" class="pagination-link animate-hover-btn">3</a>
-                            </li>
-                            <li>
-                                <a href="#" class="pagination-link animate-hover-btn">4</a>
-                            </li>
-                            <li>
-                                <a href="#" class="pagination-link animate-hover-btn">
-                                    <span class="icon icon-arrow-right"></span>
-                                </a>
-                            </li>
+                            <!-- Previous Button -->
+                            {% if page_posts.has_previous %}
+                                <li>
+                                    <a href="?page={{ page_posts.previous_page_number }}" class="pagination-link animate-hover-btn">
+                                        <span class="icon icon-arrow-left"></span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            
+                            <!-- Page Numbers -->
+                            {% for page in page_range %}
+                                <li class="{% if page == page_posts.number %}active{% endif %}">
+                                    <a href="?page={{ page }}" class="pagination-link {% if page != page_posts.number %}animate-hover-btn{% endif %}">
+                                        {{ page }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            
+                            <!-- Next Button -->
+                            {% if page_posts.has_next %}
+                                <li>
+                                    <a href="?page={{ page_posts.next_page_number }}" class="pagination-link animate-hover-btn">
+                                        <span class="icon icon-arrow-right"></span>
+                                    </a>
+                                </li>
+                            {% endif %}
                         </ul>
+
                         {%else%}
                         <div class="text-center">
                             <img src="{%static 'images/logo/404.png'%}" alt="Not Found Image">

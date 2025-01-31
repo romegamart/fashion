@@ -1,9 +1,17 @@
 from django.shortcuts import render
 import requests
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseForbidden
 from .models import *
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+from django.contrib import messages
+from django.db.models import Q
+
+
 
 # Create your views here.
 def home_page(request):
@@ -11,6 +19,7 @@ def home_page(request):
     maincategories=Maincategory.objects.all()
     categories=Category.objects.all()
     subcategories=Subcategory.objects.all()
+    slider=Slider.objects.all()
     products=Product.objects.all().order_by('id').reverse()[:6]
     try:
        brands_we_love=Product.objects.filter(offers=Supercategory.objects.get(slug="brands-we-love"))
@@ -18,10 +27,12 @@ def home_page(request):
        pass
     context = {
         'supercategories': supercategories,'maincategories': maincategories, 'categories': categories, 'subcategories': subcategories,
-        'products': products,'brands_we_love':brands_we_love
+        'products': products,'brands_we_love':brands_we_love,'slider':slider
     }
     return render(request,'front/index.html',context)
 
+def category_by_maincategory(request,ops):
+    return render(request,'front/categories.html')
 
 def product_by_maincategory_category(request,mcat,cat):
     try:
@@ -39,7 +50,15 @@ def offers_page(request, cat):
     color = Color.objects.all()
 
     # Filtering logic
-    data = Product.objects.filter(offers=Supercategory.objects.get(slug=cat))
+    try:
+        if cat == "all":
+            data = Product.objects.filter(offers__isnull=False)
+        else:
+            supercategory = Supercategory.objects.get(slug=cat)
+            data = Product.objects.filter(offers=supercategory)
+    except Supercategory.DoesNotExist:
+        data = Product.objects.none()  # Return an empty queryset
+
 
     # Apply filters based on selected checkboxes
     selected_maincategories = request.GET.getlist('maincategory[]')
@@ -179,14 +198,95 @@ def faq(request):
 
 
 #User dashboard
+
+def login_page(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        
+        # Authenticate user
+        user = authenticate(username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            
+            # Redirect based on user type or 'next' parameter
+            next_url = request.GET.get("next")
+            if next_url:
+                return redirect(next_url)
+            elif user.is_superuser:
+                return redirect("/admin-dashboard")  # Use reverse for named URL
+            else:
+                return redirect("/my-account") # Use reverse for named URL
+        else:
+            messages.error(request, "Invalid username or password!")
+
+    return render(request, "front/login.html")
+
+
+
+def logout_page(request):
+    logout(request)
+    return redirect("/login")
+
 def register(request):
-    return render(request,'front/register.html')
+    if request.method == "POST":
+        # Get the form data
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+        # Check if the user already exists
+        if User.objects.filter(username=phone).exists():
+            messages.error(request, "Phone number already exists.")
+            return render(request, 'front/register.html')
+        
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email already exists.")
+            return render(request, 'front/register.html')
+        
+        # Hash the password
+        hashed_password = make_password(password)
+        
+        # Create a new buyer object
+        buyer = Buyer(name=name, phone=phone, email=email, password=hashed_password)
+        buyer.save()
 
-def login(request):
-    return render(request,'front/login.html')
+        # Split the name into first and last names
+        first_name, last_name = name.split(" ", 1) if " " in name else (name, "")
+        
+        # Create a new user object
+        user = User(username=phone, email=email, first_name=first_name, last_name=last_name, password=hashed_password)
+        user.save()
 
+        # Authenticate and log the user in
+        user = authenticate(username=phone, password=password)
+        
+        if user is not None:
+            if user.is_superuser:
+                login(request, user)
+                return redirect("/admin-dashboard")
+            else:
+               return redirect('/my-account')
+        else:
+            messages.error(request, "Invalid Username or Password!")
+
+          # Redirect to a page after successful login (e.g., home page)
+    
+    return render(request, 'front/register.html')
+
+
+
+@login_required(login_url="/login")
 def my_account(request):
-    return render(request,'front/my-account.html')
+    print("User: ",request.user.username)
+    if not Buyer.objects.filter(phone=request.user.username):
+        return HttpResponseForbidden("You don't have permission to access this page.")
+    
+    buyer=Buyer.objects.get(phone=request.user.username)
+    return render(request,'front/my-account.html',{'buyer':buyer})
+
 
 def my_account_address(request):
     return render(request,'front/my-account-address.html')
@@ -194,6 +294,7 @@ def my_account_address(request):
 def my_account_edit(request):
     return render(request,'front/my-account-edit.html')
 
+@login_required(login_url="/login")
 def my_account_order(request):
     return render(request,'front/my-account-orders.html')
 
@@ -209,3 +310,44 @@ def payment_confirmation(request):
 def payment_failure(request):
     return render(request,'front/payment-failure.html')
 
+
+def search_product(request):
+    maincategories = Maincategory.objects.all()
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
+    brands = Brand.objects.all()
+    size = Size.objects.all()
+    color = Color.objects.all()
+
+    query = request.GET.get('query', '').strip()  # Get the query from GET request
+
+    # Filter products based on the search query
+    if query:
+        data = Product.objects.filter(
+            Q(name__icontains=query) |  # Search by name
+            Q(description__icontains=query) |  # Search by description
+            Q(category__name__icontains=query) |  # Search by category name
+            Q(subcategory__name__icontains=query)  # Search by subcategory name
+        ).distinct()  # Avoid duplicate results if multiple fields match
+    else:
+        data = Product.objects.none()  # If no query, return empty results
+
+    # Pagination
+    paginator = Paginator(data, 100)
+    page_number = request.GET.get('page')
+    page_posts = paginator.get_page(page_number)
+    current_page = page_posts.number
+    total_pages = paginator.num_pages
+    page_range = range(max(current_page - 2, 1), min(current_page + 3, total_pages + 1))
+
+    return render(request, 'front/products.html', {
+        'page_posts': page_posts,
+        'page_range': page_range,
+        'maincategories': maincategories,
+        'categories': categories,
+        'subcategories': subcategories,
+        'brands': brands,
+        'size': size,
+        'color': color,
+        'query': query,  # Pass the query to the template
+    })

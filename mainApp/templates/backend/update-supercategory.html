@@ -56,10 +56,30 @@
                                         </div>
                                     </div>
                                     {% endif %}
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <div class="mb-3">
                                             <label class="form-label">Icon<span class="text-danger">*</span></label>
                                             <input type="file" accept=".png,.jpg,.jpeg" class="form-control" name="image">
+                                        </div>
+                                    </div>
+
+                                    {% if data.background_image %}
+                                    <div class="col-lg-1 mt-4">
+                                        <div class="mb-3">
+                                            <img 
+                                                src="https://via.placeholder.com/50" 
+                                                data-src="{{ data.background_image }}" 
+                                                alt="Image" 
+                                                class="lazy-load img-thumbnail" 
+                                                width="50"
+                                                height="50">
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Background Image(400x320px)<span class="text-danger">*</span></label>
+                                            <input type="file" accept=".png,.jpg,.jpeg" class="form-control" name="image2">
                                         </div>
                                     </div>
                                     

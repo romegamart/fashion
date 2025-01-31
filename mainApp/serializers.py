@@ -2,10 +2,21 @@ from rest_framework import serializers
 from .models import *
 
 
+
+
+class SliderSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Slider
+        fields = ['id', 'category', 'image']
+
+    def create(self, validated_data):
+        return Slider.objects.create(**validated_data)
+
+
 class SupercategorySerializers(serializers.ModelSerializer):
     class Meta:
         model = Supercategory
-        fields = ['id', 'name', 'slug', 'image']
+        fields = ['id', 'name', 'slug', 'image','background_image']
 
     def create(self, validated_data):
         return Supercategory.objects.create(**validated_data)
@@ -28,7 +39,7 @@ class CategorySerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ['id', 'maincategory', 'name', 'slug', 'image', 'specifications']
+        fields = ['id', 'maincategory', 'name', 'slug', 'image', 'app_background', 'specifications']
 
     def create(self, validated_data):
         return Category.objects.create(**validated_data)
@@ -71,35 +82,62 @@ class SizeSerializers(serializers.ModelSerializer):
         return Size.objects.create(*validated_data)
 
 
+
 class ProductSerializer(serializers.ModelSerializer):
-    maincategory = serializers.SlugRelatedField(
-        queryset=Maincategory.objects.all(),
-        slug_field='name'  # Assuming 'name' is the field you want to display
-    )
-    category = serializers.SlugRelatedField(
-        queryset=Category.objects.all(),
-        slug_field='name'
-    )
-    subcategory = serializers.SlugRelatedField(
-        queryset=Subcategory.objects.all(),
-        slug_field='name'
-    )
-    brand = serializers.SlugRelatedField(
-        queryset=Brand.objects.all(),
-        slug_field='name'
-    )
 
     class Meta:
         model = Product
         fields = [
-            'id', 'maincategory', 'category', 'subcategory', 'brand', 
+            'id', 'offers','maincategory', 'category', 'subcategory', 'brand', 
             'image1', 'image2', 'image3', 'image4', 
-            'name', 'price', 'quantity', 'size', 'color', 
-            'specifications', 'rating', 'reviews', 'description', 
+            'name', 'base_price', 'discount', 'price', 
+            'quantity', 'size', 'color', 'specifications', 
+            'rating', 'reviews', 'weight', 'length', 
+            'height', 'width', 'tax', 'description', 
             'faq', 'sku', 'date'
         ]
+        depth = 1
 
     def create(self, validated_data):
-        return Product.objects.create(**validated_data)
-    
-   
+        return Product.objects.create(*validated_data)
+
+
+
+class BuyerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Buyer
+        fields = ['id', 'name', 'phone', 'email', 'verification', 'date']
+
+
+class AddressSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ['id', 'buyer', 'addressType', 'alternatePhone', 'address', 'landmark', 'city', 'state', 'pin']
+        depth = 1
+
+
+class WishlistSerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Wishlist
+        fields = ['id', 'buyer', 'product']
+        depth = 1
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = [
+            'id',
+            'buyer',
+            'product',
+            'address',
+            'quantity',
+            'totalPrice',
+            'shippingPrice',
+            'finalPrice',
+            'transactionId'
+        ]
+        depth = 1
+
+    def create(self, validated_data):
+        return Order.objects.create(**validated_data)

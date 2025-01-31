@@ -10,6 +10,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home_page),
+    path('search/',views.search_product),
     path('men/',views.men_home_page),
     path('kid/',views.kid_home_page),
     path('offers/<str:cat>/',views.offers_page),
@@ -30,7 +31,8 @@ urlpatterns = [
     path('faq/',views.faq),
 
     #User Dashboard
-    path('login/',views.login),
+    path('login/',views.login_page),
+    path('logout/',views.logout_page),
     path('register/',views.register),
     path('my-account/',views.my_account),
     path('my-account-address/',views.my_account_address),
@@ -46,6 +48,11 @@ urlpatterns = [
     path('prduct-store/',backend.product_store),
     path('admin-login/',backend.admin_login),
     path('admin-dashboard/',backend.admin_dashboard),
+
+
+    #Slider
+    path('slider/',backend.slider_page),
+    path('delete-slider/<int:id>/',backend.delete_slider),
 
     #Maincategory
     path('supercategory/',backend.supercategory_page),
@@ -107,6 +114,22 @@ urlpatterns = [
     path('app-get-color/',api.app_get_color),
     path('app-get-size/',api.app_get_size),
     path('app-get-product/',api.app_get_product),
+    path('app-get-product-details/',api.app_get_product_details),
+    path('app-get-product-by-sku/',api.app_get_product_by_sku),
+    path('app-get-slider/',api.app_get_slider),
+    path('app-buyer-login/',api.app_buyer_login),
+    path('app-buyer-register/',api.app_buyer_register),
+    #address
+    path('app-add-address/',api.app_add_address),
+    path('app-get-address/',api.app_get_address),
+    #wishlist
+    path('app-add-wishlist/',api.app_add_wishlist),
+    path('app-get-wishlist/',api.app_get_wishlist),
+    path('app-delete-wishlist/',api.app_delete_wishlist),
+    #order
+    path('app-add-order/',api.app_add_order),
+    path('app-get-order/',api.app_get_order),
+    path('app-search-product/',api.app_search_product),
 
 
     #Front end main operation

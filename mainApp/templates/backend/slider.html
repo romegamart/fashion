@@ -1,71 +1,89 @@
-{%extends 'superadmin/index.html'%}
-{%load static%}
-{%block body%}
+{% extends 'backend/index.html' %}
+{% load static %}
+{% block body %}
 
-<!-- ============================================================== -->
-<div class="main-contentw-100">
-    <div class="">
-        <div class="container-fluid">
-            <!-- end row -->
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body">
+<div class="w-100">
+    <div class="container-fluid">
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4 text-center bg-light p-2">Upload Home Page Main Slider</h4>
 
-                            <h4 class="card-title mb-4 text-center bg-light p-2">Home Page Main Slider </span></h4>
-                            {%if data%}
-                                <div class="row">
-                                    
-                                   
-                                     {%if data.image1%}
-                                     <div class="col-lg-1">
-                                        <div class="mb-3">
-                                            <img src="{{data.image1.url}}" style="height:50px;width:50px;margin-top:20px">
-                                            </div>
-                                    </div>
-                                    {%endif%}
-                                    
-                                     <div class="col-lg-2">
-                                         <div class="mb-3">
-                                             <label class="form-label">Image-1<span class="text-danger">*</span></label>
-                                             <input type="file" accept=".png,.jpg,.jpeg" class="form-control" name="image1" >
-                                         </div>
-                                     </div>
-                                    <div class="col-lg-3">
-                                        <div class="mb-3">
-                                            <label class="form-label">Link-1</label>
-                                            <input type="text" class="form-control" id="colorpicker-default"placeholder="Enter Link"name="link1" value="{{data.link1}}" readonly>
-                                        </div>
-                                     </div>
-                                     <div class="col-lg-3 mt-2">
-                                        <div class="mb-3">
-                                            <a href="/update-slider/{{data.id}}" class="btn btn-primary text-center mt-4" style="padding:2px 50px;">Edit</a>
-                                        </div>
-                                    </div>
-                                    {% comment %} <div class="col-lg-3 mt-2">
-                                        <div class="mb-3">
-                                            <a href="#"onclick="confirmDelete()" class="btn btn-danger text-center mt-4" style="padding:2px 50px;">Delete</a>
-                                        </div>
-                                           
-                                            <script>
-                                                function confirmDelete() {
-                                                    if (confirm("Are you sure you want to delete this item?")) {
-                                                        window.location.href = "/delete-slider/";
-                                                    } else {
-                                                        return false;
-                                                    }
-                                                }
-                                            </script>
-                                    </div> {% endcomment %}
-                               </div>
-                            {%endif%}
+                        <!-- Upload Form -->
+                        <form method="post" enctype="multipart/form-data" class="bg-warning p-3 text-dark mb-3">
+                            {% csrf_token %}
+                            <div class="row">
+                                <!-- File Input -->
+                                <div class="col-lg-3 mb-3">
+                                    <label>Slider Image<span class="text-danger">*</span></label>
+                                    <input type="file" name="sliderImage" accept=".jpg, .png, .jpeg, .webp"
+                                        class="form-control" required>
+                                </div>
+
+                                <!-- Slider Key Dropdown -->
+                                <div class="col-lg-3 mb-3">
+                                    <label>Slider Key<span class="text-danger">*</span></label>
+                                    <select name="sliderKey" class="form-control" required>
+                                        <option value="" selected disabled>Select Key</option>
+                                        <option value="maincategory">Maincategory</option>
+                                        <option value="category">Category</option>
+                                        <option value="subcategory">Subcategory</option>
+                                    </select>
+                                </div>
+
+                                <!-- Slider Value Input -->
+                                <div class="col-lg-3 mb-3">
+                                    <label>Slider Value<span class="text-danger">*</span></label>
+                                    <input type="text" name="sliderValue" class="form-control"
+                                        placeholder="Enter Value" required>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-lg-3 mb-3 mt-4">
+                                    <button type="submit" class="btn btn-primary w-100">Upload</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Slider Items -->
+                        <div class="row border">
+                            <h4 class="text-center">Current Slider</h4>
+                            {% for item in slider %}
+                            {% if item.image %}
+                            <div class="col-lg-2 text-center mb-4">
+                                <!-- Slider Image -->
+                                <div class="position-relative">
+                                    <img src="{{ item.image }}" alt="Slider Image" class="img-fluid rounded lazy"
+                                        style="height: 50px; width: auto; object-fit: cover;">
+
+                                    <!-- Delete Button -->
+                                    <a href="#" onclick="confirmDelete({{ item.id }})"
+                                        class="btn btn-sm btn-danger position-absolute" style="top: 5px; right: 5px;">
+                                        &times;
+                                    </a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
                         </div>
+
+                        <script>
+                            // Confirm delete function
+                            function confirmDelete(sliderId) {
+                                if (confirm("Are you sure you want to delete this item?")) {
+                                    // Redirect or perform AJAX to delete the slider item
+                                    window.location.href = `/delete-slider/${sliderId}`;
+                                }
+                            }
+                        </script>
+
                     </div>
                 </div>
             </div>
-            <!-- end row -->
-        </div> 
+        </div>
     </div>
-    <!-- End Page-content -->
+</div>
 
-    {%endblock%}
+{% endblock %}

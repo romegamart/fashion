@@ -13,7 +13,7 @@
                                 {% csrf_token %}
                                 <div class="row">
                                     <!-- Maincategory Selection -->
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-2">
                                         <div class="mb-3">
                                             <label class="form-label">Maincategory Name<span class="text-danger">*</span></label>
                                             <select name="maincategory" class="form-control" required>
@@ -34,12 +34,35 @@
 
                                     <!-- Image -->
                                     {% if data.image %}
-                                    <div class="col-lg-1 mt-4">
+                                    <div class="col-lg-1 mt-1">
                                         <div class="mb-3">
                                             <img 
                                                 src="https://via.placeholder.com/50" 
                                                 data-src="{{ data.image }}" 
                                                 alt="Maincategory Image" 
+                                                class="lazy-load img-thumbnail" 
+                                                width="100%"
+                                                height="50px">
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    <div class="col-lg-2">
+                                        <div class="mb-3">
+                                            
+                                            <label class="form-label">Icon(400x400px)</label>
+                                            <input type="file" accept=".png,.jpg,.jpeg,.webp" class="form-control" name="image">
+                                            
+                                        </div>
+                                    </div>
+
+                                    <!-- Image -->
+                                    {% if data.app_background %}
+                                    <div class="col-lg-1 mt-1">
+                                        <div class="mb-3">
+                                            <img 
+                                                src="https://via.placeholder.com/50" 
+                                                data-src="{{ data.app_background }}" 
+                                                alt="Image" 
                                                 class="lazy-load img-thumbnail" 
                                                 width="100%"
                                                 height="100%">
@@ -49,8 +72,8 @@
                                     <div class="col-lg-3">
                                         <div class="mb-3">
                                             
-                                            <label class="form-label">Icon</label>
-                                            <input type="file" accept=".png,.jpg,.jpeg,.webp" class="form-control" name="image">
+                                            <label class="form-label">App Background(400x320px)</label>
+                                            <input type="file" accept=".png,.jpg,.jpeg,.webp" class="form-control" name="app_background">
                                             
                                         </div>
                                     </div>

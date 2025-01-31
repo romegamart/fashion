@@ -149,7 +149,9 @@
                                                 <label class="style-image hover-tooltip color-btn" data-color="beige" for="color-1" data-value="Beige">
                                                     <div>
                                                         <div class="image">
-                                                            <img class=" lazyloaded" data-src="{%static 'images/shop/products/hmgoepprod.jpg'%}" alt="" src="{%static 'images/shop/products/hmgoepprod.jpg'%}">
+                                                            <a href="/product-details/{{item.name|slugify}}-{{item.id}}">
+                                                            <img class=" lazyloaded" data-src="{{item.image1}}" alt="Image" src="{{item.image1}}">
+                                                            </a>
                                                         </div>
                                                     </div>
                                                      <span class="tooltip">Beige</span>

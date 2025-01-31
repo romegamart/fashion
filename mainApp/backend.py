@@ -53,6 +53,7 @@ def image_store(image_type, image_file):
         print(f"Error occurred during image upload: {e}")
         return None
 
+
 # Function to save product with an uploaded image
 def product_store(request):
     if request.method == "POST":
@@ -90,7 +91,12 @@ def admin_login(request):
         if user is not None:
             if user.is_superuser:
                 login(request, user)
-                return redirect("/admin-dashboard")
+                # Redirect based on user type or 'next' parameter
+                next_url = request.GET.get("next")
+                if next_url:
+                   return redirect(next_url)
+                else:
+                    redirect("/admin-dashboard")
             else:
                 messages.error(request, "You do not have admin privileges.")
         else:
@@ -122,6 +128,61 @@ def admin_dashboard(Request):
     return render(Request,'backend/index.html',{'page_posts':page_posts,'page_range': page_range,'offers':offers})
 
 
+# Slider
+@login_required(login_url='/admin-login/')
+@user_passes_test(lambda u: u.is_superuser, login_url='/admin-login/')
+def slider_page(request):
+    # Check if the user is a superuser
+    if not request.user.is_superuser:
+        return HttpResponseForbidden("You don't have permission to access this page.")
+
+    if request.method == "POST":
+        # Fetch existing sliders for the template
+        slider = Slider.objects.all().order_by('-id')
+
+        # Collect data from POST request
+        slider_key = request.POST.get('sliderKey')
+        slider_value = request.POST.get('sliderValue')
+        uploaded_image = request.FILES.get('sliderImage')
+
+        # Create a new Slider instance
+        new_slider = Slider()
+
+        # Handle image upload and storage
+        if uploaded_image:
+            # Call the `image_store` function to upload the image and get the URL
+            image_url = image_store("category", uploaded_image)
+            new_slider.image = image_url
+        else:
+            new_slider.image = ''
+
+        # Save category data as JSON
+        if slider_key and slider_value:
+            new_slider.category = {slider_key: slider_value}
+
+        # Save the slider to the database
+        new_slider.save()
+
+        # Redirect to the slider list page
+        return redirect('/slider')
+
+    # If GET request, render the slider template
+    slider = Slider.objects.all().order_by('-id')  # Fetch all sliders
+    return render(request, 'backend/slider.html', {'slider': slider})
+
+
+
+@login_required(login_url='/admin-login/')
+@user_passes_test(is_superuser, login_url='/admin-login/')
+def delete_slider(Request,id):
+    if not Request.user.is_superuser:
+        return HttpResponseForbidden("You don't have permission to access this page.")
+    else:  
+       data=Slider.objects.get(id=id)
+       data.delete()
+       return redirect('/slider')
+
+
 
 #Maincategory
 @login_required(login_url='/admin-login/')
@@ -143,6 +204,13 @@ def add_supercategory(Request):
             else:
                 image_url = None
             m.image=image_url
+            uploaded_image2=Request.FILES.get('image2')
+            if uploaded_image2:
+            # Call the image_store function to upload the image and get the URL
+               image_url2 = image_store("category", uploaded_image2)
+            else:
+                image_url2 = None
+            m.background_image=image_url2
             
             m.save()
             return redirect('/supercategory')
@@ -177,10 +245,18 @@ def update_supercategory(Request,id):
                 image_url = None
             if(image_url):
                 data.image=image_url
+            uploaded_image2=Request.FILES.get('image2')
+            if uploaded_image2:
+            # Call the image_store function to upload the image and get the URL
+               image_url2 = image_store("category", uploaded_image2)
+            else:
+                image_url2 = None
+            data.background_image=image_url2
             
             data.save()
             return redirect('/supercategory')
         return render(Request,'backend/update-supercategory.html',{'data':data,'supercategories':supercategories})
+
 
 @login_required(login_url='/admin-login/')
 @user_passes_test(is_superuser, login_url='/admin-login/')
@@ -220,15 +296,16 @@ def add_maincategory(Request):
             return redirect('/maincategory')
         return render(Request,'backend/add-maincategory.html',{'maincategories':maincategories})
 
+
 @login_required(login_url='/admin-login/')
 @user_passes_test(is_superuser, login_url='/admin-login/')
 def maincategory_page(Request):
     if not Request.user.is_superuser:
         return HttpResponseForbidden("You don't have permission to access this page.")
     else:  
-        
         maincategory=Maincategory.objects.all().order_by('id').reverse()
         return render(Request,'backend/maincategory.html',{'maincategory':maincategory})
+
 
 @login_required(login_url='/admin-login/')
 @user_passes_test(is_superuser, login_url='/admin-login/')
@@ -255,6 +332,7 @@ def update_maincategory(Request,id):
             data.save()
             return redirect('/maincategory')
         return render(Request,'backend/update-maincategory.html',{'data':data,'maincategories':maincategories})
+
 
 @login_required(login_url='/admin-login/')
 @user_passes_test(is_superuser, login_url='/admin-login/')
@@ -289,13 +367,23 @@ def add_category(Request):
                 c.specifications = specifications
 
             uploaded_image=Request.FILES.get('image')
+            uploaded_image2=Request.FILES.get('app_background')
             if uploaded_image:
             # Call the image_store function to upload the image and get the URL
                image_url = image_store("category", uploaded_image)
             else:
                 image_url = None
+
             if(image_url):
                 c.image=image_url
+                
+            if uploaded_image2:
+            # Call the image_store function to upload the image and get the URL
+               image_url2 = image_store("category", uploaded_image2)
+            else:
+                image_url2 = None
+            if(image_url2):
+                c.app_background=image_url2
             
             c.title=Request.POST.get('title')
             c.description=Request.POST.get('description')
@@ -320,6 +408,8 @@ def category_page(Request):
         category=Category.objects.all().order_by('id').reverse()
         return render(Request,'backend/category.html',{'category':category})
 
+
+
 @login_required(login_url='/admin-login/')
 @user_passes_test(is_superuser, login_url='/admin-login/')
 def update_category(request, id):
@@ -343,9 +433,13 @@ def update_category(request, id):
 
         # Handle image upload
         uploaded_image = request.FILES.get('image')
+        uploaded_image2 = request.FILES.get('app_background')
         if uploaded_image:
             image_url = image_store("category", uploaded_image)  # Replace with your actual image upload logic
             data.image = image_url
+        if uploaded_image2:
+                    image_url2 = image_store("category", uploaded_image2)  # Replace with your actual image upload logic
+                    data.app_background = image_url2
 
         # Meta fields
         data.title = request.POST.get('title')
@@ -356,6 +450,7 @@ def update_category(request, id):
         return redirect('/category')
 
     return render(request, 'backend/update-category.html', {'data': data, 'mcat': mcat})
+
 
 
 @login_required(login_url='/admin-login/')
@@ -388,6 +483,7 @@ def add_subcategory(Request):
             
 
             uploaded_image=Request.FILES.get('image')
+            uploaded_image2=Request.FILES.get('app_background')
             if uploaded_image:
             # Call the image_store function to upload the image and get the URL
                image_url = image_store("category", uploaded_image)
@@ -395,6 +491,8 @@ def add_subcategory(Request):
                 image_url = None
             if(image_url):
                 c.image=image_url
+
+            
             
             c.title=Request.POST.get('title')
             c.description=Request.POST.get('description')
@@ -407,6 +505,7 @@ def add_subcategory(Request):
             c.save()
             return redirect('/subcategory')
         return render(Request,'backend/add-subcategory.html',{'scat':scat,'subcategories':subcategories})
+
 
 
 @login_required(login_url='/admin-login/')
@@ -475,6 +574,8 @@ def update_subcategory(request, id):
         'data': data, 'scat': scat, 'subcategories': subcategories
     })
 
+
+
 @login_required(login_url='/admin-login/')
 @user_passes_test(is_superuser, login_url='/admin-login/')
 def delete_subcategory(Request,id):
@@ -519,6 +620,8 @@ def add_brand(Request):
             return redirect('/brand')
         return render(Request,'backend/add-brand.html',{'brand':brand})
 
+
+
 @login_required(login_url='/admin-login/')
 @user_passes_test(is_superuser, login_url='/admin-login/')
 def brand_page(Request):
@@ -528,6 +631,7 @@ def brand_page(Request):
         
         brand=Brand.objects.all().order_by('id').reverse()
         return render(Request,'backend/brand.html',{'brand':brand})
+
 
 @login_required(login_url='/admin-login/')
 @user_passes_test(is_superuser, login_url='/admin-login/')
@@ -605,6 +709,7 @@ def color_page(Request):
     else:  
         color=Color.objects.all().order_by('id').reverse()
         return render(Request,'backend/color.html',{'color':color})
+
 
 @login_required(login_url='/admin-login/')
 @user_passes_test(is_superuser, login_url='/admin-login/')

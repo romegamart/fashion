@@ -1,13 +1,7 @@
 {% extends "front/index.html" %}
 {%load static%}
 {%block body%}
-        <!-- page-title -->
-        <div class="tf-page-title style-2">
-            <div class="container-full">
-                <div class="heading text-center">Log in</div>
-            </div>
-        </div>
-        <!-- /page-title -->
+        
     
         <section class="flat-spacing-10">
             <div class="container">
@@ -17,7 +11,8 @@
                             <h5 class="mb_24">Reset your password</h5>
                             <p class="mb_30">We will send you an email to reset your password</p>
                             <div>
-                                <form class="" id="login-form" action="#" method="post" accept-charset="utf-8" data-mailchimp="true">
+                                <form method="post" id="login-form"  method="post" accept-charset="utf-8" data-mailchimp="true">
+                                    {%csrf_token%}
                                     <div class="tf-field style-1 mb_15">
                                         <input class="tf-field-input tf-input" placeholder="" type="email" id="property3" name="email">
                                         <label class="tf-field-label fw-4 text_black-2" for="property3">Email *</label>
@@ -33,10 +28,20 @@
                         </div>
                         <div id="login">
                             <h5 class="mb_36">Log in</h5>
+                            {% if messages %}
+                            <div class="container">
+                                {% for message in messages %}
+                                <div class="alert text-danger mt-2" role="alert">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
                             <div>
-                                <form class="" id="login-form" action="/my-account" accept-charset="utf-8">
+                                <form method="post">
+                                    {%csrf_token%}
                                     <div class="tf-field style-1 mb_15">
-                                        <input class="tf-field-input tf-input" placeholder="" type="email" id="property3" name="email">
+                                        <input class="tf-field-input tf-input" placeholder="" type="text" id="property3" name="username">
                                         <label class="tf-field-label fw-4 text_black-2" for="property3">Email *</label>
                                     </div>
                                     <div class="tf-field style-1 mb_30">
